@@ -12,7 +12,7 @@ Scenario: Add two numbers
 
 @addition @bigaddition
 Scenario: Add two bigger numbers
-	* I chose 120 as first number
+	Given I chose 120 as first number
 	And I chose 150 as second number
 	When I press add
 	Then the result should be 270 on the screen
