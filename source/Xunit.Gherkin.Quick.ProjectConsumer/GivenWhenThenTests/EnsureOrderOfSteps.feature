@@ -13,3 +13,8 @@ Scenario: Ensure order of steps
 	Then Sample text for Then
 	And Sample text for And after Then
 	But Sample text for But after Then
+
+Scenario: Ensure order of steps using Star Notation
+	* Sample text for step one
+	* Sample text for step two
+	* Sample text for step three

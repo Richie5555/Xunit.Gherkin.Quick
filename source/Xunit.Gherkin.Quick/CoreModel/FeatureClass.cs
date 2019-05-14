@@ -73,10 +73,12 @@ namespace Xunit.Gherkin.Quick
             bool IsStepMethodInfoAMatch(global::Gherkin.Ast.Step gherkinScenarioStep, StepMethodInfo stepMethod)
             {
                 var gherkinStepText = gherkinScenarioStep.Text.Trim();
+                var gherkinKeyword = gherkinScenarioStep.Keyword.Trim();
+                if (gherkinKeyword == "*") gherkinKeyword = "Star";
 
                 foreach (var pattern in stepMethod.ScenarioStepPatterns)
                 {
-                    if (!pattern.Kind.ToString().Equals(gherkinScenarioStep.Keyword.Trim(), StringComparison.OrdinalIgnoreCase))
+                    if (!pattern.Kind.ToString().Equals(gherkinKeyword, StringComparison.OrdinalIgnoreCase))
                         continue;
 
                     var match = Regex.Match(gherkinStepText, pattern.Pattern);

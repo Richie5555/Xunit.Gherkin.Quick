@@ -88,7 +88,7 @@ namespace Xunit.Gherkin.Quick
                 return;
 
             var matchingPattern = FindMatchingPattern(gherkinScenarioStep);
-            var gherkinStepText = gherkinScenarioStep.Text.Trim();
+            var gherkinStepText = gherkinScenarioStep.Text.Trim();   
 
             if (matchingPattern == null)
                 throw new InvalidOperationException($"This step (`{_methodInfoWrapper.GetMethodName()}`) cannot handle scenario step `{gherkinScenarioStep.Keyword.Trim()} {gherkinStepText}`.");
@@ -111,7 +111,10 @@ namespace Xunit.Gherkin.Quick
 
                 foreach (var pattern in _scenarioStepPatterns)
                 {
-                    if (!pattern.Kind.ToString().Equals(gStep.Keyword.Trim(), StringComparison.OrdinalIgnoreCase))
+                    string keyword = gStep.Keyword.Trim();
+                    if(keyword == "*") keyword = "Star";                    
+
+                    if (!pattern.Kind.ToString().Equals(keyword, StringComparison.OrdinalIgnoreCase))
                         continue;
 
                     var match = Regex.Match(gStepText, pattern.Pattern);
@@ -133,7 +136,8 @@ namespace Xunit.Gherkin.Quick
         When,
         Then,
         And,
-        But
+        But,
+        Star
     }
 
     internal static class PatternKindExtensions
@@ -159,6 +163,9 @@ namespace Xunit.Gherkin.Quick
 
                 case ButAttribute _:
                     return PatternKind.But;
+
+                case StarAttribute _:
+                    return PatternKind.Star;
 
                 default:
                     throw new NotSupportedException($"Cannot convert into step method kind: Attribute type {@this.GetType()} is not supported.");

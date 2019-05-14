@@ -58,5 +58,23 @@ namespace Xunit.Gherkin.Quick.ProductConsumer
         {
             Assert.Equal(8, _order++);
         }
+
+        [Star(@"Sample text for step one")]
+        public void Sample_text_for_step_one()
+        {
+            Assert.Equal(0, _order++);
+        }
+
+        [Star(@"Sample text for step two")]
+        public void Sample_text_for_step_two()
+        {
+            Assert.Equal(1, _order++);
+        }
+
+        [Star(@"Sample text for step three")]
+        public void Sample_text_for_step_three()
+        {
+            Assert.Equal(2, _order++);
+        }
     }
 }

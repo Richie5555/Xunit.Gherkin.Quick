@@ -12,7 +12,8 @@ namespace Xunit.Gherkin.Quick
     /// <see cref="WhenAttribute"/>,
     /// <see cref="ThenAttribute"/>
     /// <see cref="AndAttribute"/>
-    /// <see cref="ButAttribute"/>.
+    /// <see cref="ButAttribute"/>
+    /// <see cref="StarAttribute"/>.
     /// </summary>
     [AttributeUsage(AttributeTargets.Method, AllowMultiple = true)]
     public abstract class BaseStepDefinitionAttribute : Attribute

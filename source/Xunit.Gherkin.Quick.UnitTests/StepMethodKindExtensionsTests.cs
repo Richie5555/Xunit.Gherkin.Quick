@@ -35,6 +35,11 @@ namespace UnitTests
                     {
                         new ButAttribute("123"),
                         PatternKind.But
+                    },
+                    new object[]
+                    {
+                        new StarAttribute("123"),
+                        PatternKind.Star
                     }
                 };
             }
